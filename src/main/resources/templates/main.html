@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+<title>Calculator</title>
+</head>
+<body>
+<h1>Welcome to the Calculator!!!!</h1>
+<form action="/doTheMath" method="post">
+		<input required type="number" name="numberOne" value="0" > 
+		<select name="operator">
+			<option>+</option>
+			<option>- </option>
+			<option>*</option>
+			<option>/</option>
+			<option>^</option>
+			<option>rt</option>
+			<option>log</option>
+			
+			<option>sin</option>
+			<option>cos</option>
+			<option>tan</option>
+			<option>sinh</option>
+			<option>cosh</option>
+			<option>tanh</option>
+
+		</select>
+
+<input required type="number" name="numberTwo" value="0">
+
+<button>Lets see it!</button>
+</form>
+
+
+<h1>{{final.doMath}}</h1>
+	
+	<table>
+	<thead>
+		<tr>
+			<th>First Number</th>
+			<th>Operator</th>
+			<th>Second Number</th>
+			<th>Equals</th>
+			<th>Solution</th>
+		</tr>
+	</thead>
+	<tbody>
+	
+	{{#hist.calcList}}
+	<tr>
+	<td>{{ numberOne }}</<td>
+	<td>{{ operator }}</<td>
+	<td>{{ numberTwo }}</<td>
+	<td>=</td>
+	<td>{{ doMath }}
+
+	</td>
+	</tr>	
+	{{/hist.calcList}}
+	</tbody>
+</table>
+	<table>
+	<tbody>
+<form action="/cleartheMemory" method="post">
+<button>Clear the memory</button>
+</form>
+<form action="/addToMemory" method="post">
+<input required type="hidden" name="answerIndex" value="{{hist.calcLength}}">
+<button>Add to memory</button>
+</form>
+</tr>
+<tr>
+<form action="/subTheMemory" method="post">
+<input required type="hidden" name="answerIndex" value="{{hist.calcLength}}">
+<button>Subtract from memory</button>
+</form>
+<form action="/printTheMemory" method="post">
+<button>Print from memory</button>
+</form>
+</tr>
+</tbody>
+</table>
+<form action="/typeRandom" method="post">
+<input type="text" name="customFormula" > 
+<button>Enter your own formula</button>
+</form>
+<h1>{{custForm.takeApartFormula}}</h1>
+<h2>{{custForm.returnFormula}}</h2>
+</body>
+</html>
+
